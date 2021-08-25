@@ -1,0 +1,57 @@
+#{extends 'main.html' /} #{set title:'Home' /}
+
+<h5>
+<!--  <form action= "@{Livros.listarAdm}">
+<input name= "busca">
+
+<button>pesquisar</button>
+</form>
+-->
+<h8>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>data de expiracao</th>
+                                            <th>status</th>
+                                            <th>acoes</th>
+                                        </tr>
+                                    </thead>
+#{list items:emprestimos, as:'e'}
+
+
+ #{if session.get("usuario.nivel").equals("1")}
+
+#{/if}
+
+<tbody>
+                                        <tr>
+                                        
+                                            <td>${e.usuario.nome}</td>
+                                            <td>${e.dataExpiracao}</td>
+											<td>${e.livro.status}</td>
+ <td>
+											<a href= '@{Emprestimos.editar(e.id)}'>editar</a>
+											<a href= '@{Emprestimos.deletar(e.id)}'>deletar</a>
+											</td>
+                                        </tr>
+                                    </tbody>
+#{if e.livro.status == 0}
+
+<a href='#'>emprestimo</a>
+
+#{/if}
+
+</h8>
+
+#{/list}
+
+#{list items:lista, as:'u'}
+
+ 
+#{/list}
+
+                        
+</h5>

@@ -1,0 +1,36 @@
+#{extends 'main.html' /} #{set title:'Home' /}
+
+<form action="@{Emprestimos.salvar}">
+
+	<input type="hidden" name="emp.id" value="${emp?.id}"> 
+	
+	#{if emp?.id == null}
+		Usuario: 
+		<select name="emp.usuario.id">
+		<option>---</option>
+		#{list items:usuarios, as:'usuario'}
+		<option value="${usuario.id}">${usuario.nome}</option> 
+		#{/list}
+		</select>
+		<br>	
+		Livro: 
+		<select name="emp.livro.id">
+		<option>---</option>
+		#{list items:livros, as:'livro'}
+		<option value="${livro.id}">${livro.nome}</option> 
+		#{/list}
+		
+		 
+		
+	</select>
+	<br> 
+	#{/if}
+	Data Expiracao:
+	<input type="date" name="emp.dataExpiracao" value="${emp?.dataExpiracao}">
+
+<button class="btn btn-primary btn-user btn-block">salvar</button> 
+
+
+
+</form>
+ 

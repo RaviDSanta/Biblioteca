@@ -1,0 +1,52 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+
+<body>
+<div>
+<h5>
+                                    #{if flash.error}
+                                    
+                                    <a href="#" class="btn btn-warning btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </span>
+                                        <span class="text">${flash.error}</span>
+                                    </a>
+                                
+                                    
+                                    #{/if}
+
+<form action= "@{Usuarios.salvar}">
+
+<input type= "hidden" name="usu.id" value="${usu?.id}">
+
+nome: <div><input class="form-control form-control-user"  name="usu.nome" value =${usu?.nome}>
+</div><a href="#" class="btn btn-danger btn-icon-split">
+                                        <span class="text">#{error 'usu.nome' /}</span>
+                                    </a>
+<br>
+email:<div> <input class="form-control form-control-user"  name="usu.email"value =${usu?.email}>
+</div><a href="#" class="btn btn-danger btn-icon-split">
+                                        <span class="text">#{error 'usu.email' /}</span>
+                                    </a>
+<br>
+senha: <div><input type="password" name="senha" class="form-control form-control-user">
+</div><a href="#" class="btn btn-danger btn-icon-split">
+                                        <span class="text">#{error 'usu.senha' /}</span>
+                                    </a><br>
+<br>
+nivel:
+	<select name="usuario.nivel">
+		<option value="0"#{if usuario?.nivel == 0} selected #{/if}>Comum</option>
+		<option value="1"#{if usuario?.nivel == 1} selected #{/if}>Admin</option>
+	</select>
+	 <br/>
+
+
+<button class="btn btn-primary btn-user btn-block">salvar</button> 
+
+</form>
+</h5>
+</div>
+</body>

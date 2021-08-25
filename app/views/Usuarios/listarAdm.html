@@ -1,0 +1,52 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+<h5>
+
+<form action= "@{Usuarios.listarAdm}">
+
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input name= "busca" class="form-control bg-light border-0 small" placeholder="boscar por..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+</form>
+<div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary"></h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>email</th>
+                                            <th>senha</th>
+                                            <th>acoes</th>
+                                        </tr>
+                                    </thead>
+#{list items:lista, as:'u'}
+
+ <tbody>
+                                        <tr>
+                                            <td>${u.nome}</td>
+                                            <td>${u.email}</td>
+											<td>${u.senha}</td>
+											<td>
+                         		    <a href= '@{Usuarios.editar(u.id)}'>editar</a> - 
+									<a href= '@{Usuarios.deletar(u.id)}'>deletar</a>
+										</td>
+                                        </tr>
+                                    </tbody>
+#{/list}
+</table>
+                            </div>
+                        </div>
+	</h5>
