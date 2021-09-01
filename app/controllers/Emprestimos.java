@@ -3,9 +3,10 @@ package controllers;
 import java.util.Arrays;
 import java.util.List;
 
+import enums.NivelUsuario;
+import enums.StatusLivro;
 import models.Emprestimo;
 import models.Livro;
-import models.StatusLivro;
 import models.Usuario;
 import play.mvc.Controller;
 
@@ -13,8 +14,9 @@ public class Emprestimos extends Controller {
 
 	public static void form() {
 		StatusLivro status = StatusLivro.disponivel;
+		NivelUsuario nivel = NivelUsuario.COMUM;
 		List<Livro> livros = Livro.find("status = ?", status).fetch();
-		List<Usuario> usuarios = Usuario.findAll();
+		List<Usuario> usuarios = Usuario.find("nivel = ?", nivel).fetch();
 		render(livros, usuarios);
 		
 	}

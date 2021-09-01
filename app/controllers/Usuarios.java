@@ -1,9 +1,12 @@
 package controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import enums.NivelUsuario;
+import enums.StatusLivro;
 import models.Usuario;
 import play.cache.Cache;
 import play.data.validation.Validation;
@@ -15,9 +18,10 @@ import play.mvc.With;
 public class Usuarios extends Controller{
 	
 	public static void form() {  
+		List<NivelUsuario> niveis = Arrays.asList(NivelUsuario.values());
 		Usuario usu= (Usuario)Cache.get("usuario");
 		Cache.clear();
-		render(usu);
+		render(usu, niveis);
 		
 		listarAdm();
 		

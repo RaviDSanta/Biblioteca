@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
 
-#{if session.get("usuario.nivel").equals("1")}
+#{if session.get("usuario.nivel").equals("ADMINISTRADOR")}
             <li class="nav-item">
                 <a class="nav-link" href="@{Usuarios.form}">
                     <i class="fas fa-fw fas fa-clipboard-list"></i>
@@ -74,9 +74,39 @@
                 <a class="nav-link" href="@{Emprestimos.form}">
                     <i class="fas fa-fw fas fa-fw fa-table"></i>
                     <span>Emprestar Livros</span></a>
+                    </li>
 
 #{/if}
+		#{if session.get("usuario.nivel").equals("FUNCIONARIO")}
+			<li class="nav-item">
+                <a class="nav-link" href="@{Usuarios.form}">
+                    <i class="fas fa-fw fas fa-clipboard-list"></i>
+                    <span>cadastrar usuarios</span></a>
+            </li>
+            </li>
+                <li class="nav-item">
+                <a class="nav-link" href="@{Usuarios.listarAdm}">
+                    <i class="fas fa-fw fas fa-fw fa-folder"></i>
+                    <span>Listar Usuarios</span></a>
+            </li>
+                <li class="nav-item">
+                <a class="nav-link" href="@{Livros.listarAdm}">
+                    <i class="fas fa-fw fas fa-fw fa-folder"></i>
+                    <span>Listar Livros</span></a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="@{Emprestimos.form}">
+                    <i class="fas fa-fw fas fa-fw fa-table"></i>
+                    <span>Emprestar Livros</span></a>
+                    </li>
+
+			 <li class="nav-item">
+                <a class="nav-link" href="@{Emprestimos.listar}">
+                    <i class="fas fa-fw fas fa-fw fa-table"></i>
+                    <span>Listar Emprestimos</span></a>
+             </li>
 <br/>
+	#{/if}
 
                 <li class="nav-item">
                 <a class="nav-link" href="@{Login.sair}">
@@ -99,6 +129,7 @@
 
             <!-- Main Content -->
             <div id="content">
+            
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -107,7 +138,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-
+<h4>bem vindo, ${session.get("usuario.nome")}</h4>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -117,7 +148,6 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                  
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">

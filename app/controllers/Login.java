@@ -1,5 +1,6 @@
 package controllers;
 
+import enums.NivelUsuario;
 import models.Usuario;
 import play.libs.Crypto;
 import play.mvc.Controller;
@@ -12,7 +13,7 @@ public class Login extends Controller {
 		u.email = "admin@admin.com";
 		u.nome = "admin";
 		u.senha = "123";
-		u.nivel = 1;
+		u.nivel = NivelUsuario.ADMINISTRADOR;
 		u.save();
 		
 		form();
@@ -32,6 +33,8 @@ public class Login extends Controller {
 		} else {
 			session.put("usuario.email", usu.email);
 			session.put("usuario.nivel", usu.nivel);
+			session.put("usuario.nome", usu.nome);
+
 
 			Livros.listarAdm();
 		}

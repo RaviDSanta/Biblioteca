@@ -5,11 +5,11 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input name= "busca" class="form-control bg-light border-0 small" placeholder="boscar por..."
+                            <input name= "busca" class="form-control bg-light border-0 small" placeholder="buscar por..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
+                                    <i class=""></i>
                                 </button>
                             </div>
                         </div>
@@ -30,7 +30,9 @@
                                             <th>autor</th>
                                             <th>genero</th>
                                             <th>status</th>
+                                            #{if session.get("usuario.nivel").equals("ADMINISTRADOR")}
                                             <th>acoes</th>
+                                            #{/if}
                                         </tr>
                                     </thead>
 #{list items:lista, as:'u'}
@@ -42,25 +44,22 @@
                                             <td>${u.autor}</td>
                                             <td>${u.genero}</td>
 											<td>${u.status}</td>
-										#{if session.get("usuario.nivel").equals("1")}
+										#{if session.get("usuario.nivel").equals("ADMINISTRADOR")}
 											
-											<td>
-                                        <a href= '@{Livros.editar(u.id)}'>editar</a>
+										<td>
+										<a href="@{Livros.editar(u.id)}">editar</a>
 										<a href= '@{Livros.deletar(u.id)}'>deletar</a>
 										</td>
+										#{/if}
+										
+										
                                         </tr>
-
+										
                                     </tbody>
                                
-#{/if}
+										
 
 
-
-#{if u.status == 0}
-
-<a href='#'>emprestimo</a>
-
-#{/if}
 
 #{/list}
 </table>

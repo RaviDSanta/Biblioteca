@@ -14,8 +14,8 @@ public class Seguranca extends Controller {
 	}
 	@Before(unless={"Usuarios.listar"})
 	static void permissoes(){
-		if(session.get("usuario.nivel").equals("1")== false) {
-			renderText("acesso negado!");
+		if(session.get("usuario.nivel").equals("ADMINISTRADOR") == false && session.get("usuario.nivel").equals("FUNCIONARIO") == false) {
+			renderTemplate("acessoNegado.html");
 		}
 		
 	}

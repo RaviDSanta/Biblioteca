@@ -7,11 +7,11 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input name= "busca" class="form-control bg-light border-0 small" placeholder="boscar por..."
+                            <input name= "busca" class="form-control bg-light border-0 small" placeholder="buscar por..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
+                                    <i class=""></i>
                                 </button>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                                         <tr>
                                             <th>Nome</th>
                                             <th>email</th>
-                                            <th>senha</th>
+                                            <th>Nivel</th>
                                             <th>acoes</th>
                                         </tr>
                                     </thead>
@@ -38,7 +38,7 @@
                                         <tr>
                                             <td>${u.nome}</td>
                                             <td>${u.email}</td>
-											<td>${u.senha}</td>
+											<td>${u.nivel}</td>
 											<td>
                          		    <a href= '@{Usuarios.editar(u.id)}'>editar</a> - 
 									<a href= '@{Usuarios.deletar(u.id)}'>deletar</a>

@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.Entity;
 
+import enums.NivelUsuario;
 import net.sf.oval.constraint.Email;
 import play.data.validation.Equals;
 import play.data.validation.Required;
@@ -17,8 +18,8 @@ public class Usuario extends Model{
 	public String email;
 	@Required
 	public String senha;
-	@Required
-	public int nivel;
+	
+	public NivelUsuario nivel;
 	
 	public void setSenha(String s) {
 		senha = Crypto.passwordHash(s);

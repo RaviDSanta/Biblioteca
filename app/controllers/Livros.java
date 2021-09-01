@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import enums.StatusLivro;
 import models.Livro;
-import models.StatusLivro;
 import play.cache.Cache;
 import play.data.validation.Validation;
 import play.mvc.Controller;

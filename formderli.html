@@ -36,12 +36,11 @@ senha: <div><input type="password" name="senha" class="form-control form-control
                                         <span class="text">#{error 'usu.senha' /}</span>
                                     </a><br>
 <br>
-Nivel:
-	<select name="usu.nivel">
-	<option>---</option>
-		#{list items:niveis, as:'nivel'}
-			<option #{if usu?.nivel == nivel} selected #{/if}>${nivel}</option>
-		#{/list}
+nivel:
+	<select name="usuario.nivel">
+		<option value="0"#{if usuario?.nivel == 0} selected #{/if}>Comum</option>
+		<option value="1"#{if usuario?.nivel == 1} selected #{/if}>Admin</option>
+		<option value="2"#{if usuario?.nivel == 2} selected #{/if}>Funcionario</option>
 	</select>
 	 <br/>
 
