@@ -7,8 +7,10 @@ import play.mvc.Controller;
 
 public class Login extends Controller {
 
-	public static void admin() {
 
+
+	public static void form() {
+		if(Usuario.count()==0) {
 		Usuario u = new Usuario();
 		u.email = "admin@admin.com";
 		u.nome = "admin";
@@ -18,8 +20,6 @@ public class Login extends Controller {
 		
 		form();
 	}
-
-	public static void form() {
 		render();
 	}
 
